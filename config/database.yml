@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: IG_clone_development
+
+test:
+  <<: *default
+  database: IG_clone_test
+
+production:
+  <<: *default
+  database: IG_clone_production
+  username: IG_clone
+  password: <%= ENV['IG_CLONE_DATABASE_PASSWORD'] %>
